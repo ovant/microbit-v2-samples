@@ -3,7 +3,6 @@
 
 MicroBit uBit;
 
-MicroBitBLEManager *BLEManager;
 
 
 void pressedA(MicroBitEvent)
@@ -38,7 +37,7 @@ main()
     // BLEManager->showNameHistogram(uBit.display);
 
     // temperature_test();
-    ble_test();
+    // ble_test();
     buttons();
     // while(1)
     //     uBit.display.scroll("HELLO WORLD!");
