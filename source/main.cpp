@@ -33,12 +33,7 @@ int
 main()
 {
     uBit.init();
-    // BLEManager->pairingMode(uBit.display,uBit.buttonA);
-    // BLEManager->showNameHistogram(uBit.display);
+    // buttons();
+    ble_test();
 
-    // temperature_test();
-    // ble_test();
-    buttons();
-    // while(1)
-    //     uBit.display.scroll("HELLO WORLD!");
 }
