@@ -1,7 +1,7 @@
 {
     "target": {
         "name": "codal-microbit-v2",
-        "url": "https://github.com/ovant/codal-s140",
+        "url": "https://github.com/ovant/codal-microbit-v2",
         "branch": "master",
         "type": "git",
         "test_ignore": true,
