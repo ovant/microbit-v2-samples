@@ -38,10 +38,6 @@ void ble_test()
     new MicroBitMagnetometerService(*uBit.ble, uBit.compass);
     new MicroBitTemperatureService(*uBit.ble, uBit.thermometer);
 
-    uBit.ble->startScanning();
-
-    uBit.display.scroll("scanning");
-
     uart = new MicroBitUARTService(*uBit.ble, 32, 32);
     uart->eventOn("\r\n");
 

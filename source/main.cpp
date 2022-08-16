@@ -34,7 +34,7 @@ main()
 {
     uBit.init();
     // buttons();
-    ble_test();
+    ble_test_scan();
 
 
 }
