@@ -1,14 +1,14 @@
 #include "MicroBit.h"
 #include "Tests.h"
-#include <string>
+// #include <string>
 
 extern MicroBit uBit;
 
-void display_number(uint8_t n){
-    if(n>25)
-        n = 25;
-    for(uint8_t i=0;i<n;i++){
-        uBit.display.image.setPixelValue(i%5,i/5,200);
+void display_number(int n){
+    if(n>50)
+        n = 50;
+    for(int i=0;i<n;i++){
+        uBit.display.image.setPixelValue(i%10/2,i/10,50+200*(i%2));
     }
 }
 
@@ -16,31 +16,28 @@ void display_number(uint8_t n){
 void ble_test_scan()
 {
 
-    bool scan_flag;
+    
     uBit.display.setBrightness(70);
 
     uBit.display.scroll("B");
 
-    uBit.ble->initializeScan();
-
     uBit.ble->startScanning();
 
-    uBit.display.scroll('S');
-
-
+    // uBit.display.scroll('S');
 
     while(1){
         uBit.display.print("s");
         uBit.sleep(250);
         uBit.display.clear();
+        bool scan_flag;
         scan_flag = uBit.ble->getFlag();
         if(scan_flag){
-
             LightricityData data = uBit.ble->getScanResults();
-            unsigned int lux = data.getLux();
-            // if(lux)               
-            //     while(1)
-            //         uBit.display.scroll(std::to_string(lux));
+            if(data.getTemp())               
+                while(1){
+                    uBit.display.scroll(data.getTempString());
+                    uBit.display.scroll(data.getButton());
+                }
         }
         uBit.sleep(250);
     }
