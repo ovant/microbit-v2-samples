@@ -12,14 +12,48 @@ void display_number(int n){
     }
 }
 
+void displayAll(LightricityData data){
+    uBit.display.scroll("ID",80);
+    uBit.display.scroll(data.getSensorID());
+    if(data.getTemp()){
+        uBit.display.scroll("T=",80);
+        uBit.display.scroll(data.getTempString() + 'C');
+
+    }
+    if(data.getHumidity()){
+        uBit.display.scroll("H=",80);
+        uBit.display.scroll(data.getHumidityString() + '%');
+
+    }
+    if(data.getPressure()){
+        uBit.display.scroll("P=",80);
+        uBit.display.scroll(data.getPressureString() + "Pa");
+
+    }
+    if(data.getLux()){
+        uBit.display.scroll("lux=",80);
+        uBit.display.scroll(data.getLuxString());
+    }
+    if(data.getCO2()){
+        uBit.display.scroll("CO2=",80);
+        uBit.display.scroll(data.getCO2String());
+    }
+    if(data.getVoltage()){
+        uBit.display.scroll('V=',80);
+        uBit.display.scroll(data.getVoltageString() + "mV");
+
+    }
+}
+
 
 void ble_test_scan()
 {
 
     
-    uBit.display.setBrightness(70);
+    uBit.display.setBrightness(100);
 
-    uBit.display.scroll("B");
+    uBit.display.scroll("Lightricity",90);
+ 
 
     uBit.ble->startScanning();
 
@@ -32,12 +66,7 @@ void ble_test_scan()
         bool scan_flag;
         scan_flag = uBit.ble->getFlag();
         if(scan_flag){
-            LightricityData data = uBit.ble->getScanResults();
-            if(data.getTemp())               
-                while(1){
-                    uBit.display.scroll(data.getTempString());
-                    uBit.display.scroll(data.getButton());
-                }
+            displayAll(uBit.ble->getScanResults());
         }
         uBit.sleep(250);
     }
