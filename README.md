@@ -4,8 +4,11 @@
 
 This repository is provides the tooling needed to compile a C/C++ CODAL program for the micro:bit v2 and produce a HEX file that can be downloaded to the device.
 
-## Raising Issues
-Any issues regarding the micro:bit are gathered on the [lancaster-university/codal-microbit-v2](https://github.com/lancaster-university/codal-microbit-v2) repository. Please raise yours there too.
+This repository if a fork of the [original from Lancaster University](https://github.com/lancaster-university/microbit-v2-samples).
+It is meant to work with forks of the [CODAL](https://github.com/ovant/codal-microbit-v2) and [CODAL-NRFSDK](https://github.com/ovant/codal-microbit-nrf5sdk) with the scanning module implemented. (Don't worry, these will be downloaded automatically when you build this project.)
+
+This serves to provide an example of how to use the scanning module to detect Lightricity beacons and display their data.
+
 
 # Installation
 You need some open source pre-requisites to build this repo. You can either install these tools yourself, or use the docker image provided below.
@@ -23,9 +26,6 @@ We use Ubuntu Linux for most of our tests. You can also install these tools easi
     sudo apt install cmake
     sudo apt install gcc-arm-none-eabi binutils-arm-none-eabi
 ```
-
-## Yotta
-For backwards compatibility with [microbit-samples](https://github.com/lancaster-university/microbit-samples) users, we also provide a yotta target for this repository.
 
 ## Docker
 You can use the [Dockerfile](https://github.com/lancaster-university/microbit-v2-samples/blob/master/Dockerfile) provided to build the samples, or your own project sources, without installing additional dependencies.
